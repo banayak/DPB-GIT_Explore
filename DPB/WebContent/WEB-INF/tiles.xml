@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="ISO-8859-1" 	 ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="baseLayout" template="/jsp/baseLayout.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header" value="/jsp/header.jsp" />
+		<put-attribute name="body" value="/jsp/middleBody.jsp" />
+		<put-attribute name="footer" value="/jsp/footer.jsp" />
+	</definition>
+	<definition name="baseLayoutPopup" template="/jsp/baseLayoutPopup.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header" value="/jsp/headerPopup.jsp" />
+		<put-attribute name="body" value="/jsp/middleBody.jsp" />
+		<put-attribute name="footer" value="/jsp/footerPopup.jsp" />
+	</definition>
+	<definition name="baseLayoutReportPopup" template="/jsp/baseLayoutReportPopup.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header" value="/jsp/headerReportPopup.jsp" />
+		<put-attribute name="body" value="/jsp/middleBody.jsp" />
+		<put-attribute name="footer" value="/jsp/footerReport.jsp" />
+	</definition>
+	<definition name="baseLayoutNetstarReportPopup" template="/jsp/baseLayoutNetstarReportPopup.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header" value="/jsp/headerReportPopup.jsp" />
+		<put-attribute name="body" value="/jsp/middleBody.jsp" />
+		<put-attribute name="footer" value="/jsp/footerReport.jsp" />
+	</definition>
+	
+	<definition name="/welcome.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Welcome" />
+		<put-attribute name="body" value="/jsp/middleBody.jsp" />
+	</definition>
+	
+	<definition name="admin" extends="baseLayout">
+      <put-attribute name="title"  value="Admin"/>
+      <put-attribute name="body"   value="/jsp/mytest.jsp"/>      
+ 	</definition>
+ 	
+ 	
+ 	<!--  Start Dashboards tiles -->
+ 		
+ 	<definition name="/dashBoard.tiles" extends="baseLayout"> 
+		<put-attribute name="title" value="Dealer Performance Bonus - DashBoard"/> 
+		<put-attribute name="body" value="/jsp/dpbHome.jsp"/> 
+	</definition> 
+ 		
+	 <!--  End Dashboards tiles -->
+	 	
+ 	
+ 	 <!--  Start File Processing tiles -->
+ 	 
+ 	 <definition name="/fileProcessingInp.tiles" extends="baseLayout"> 
+		<put-attribute name="title" value="Dealer Performance Bonus - File Processing Input"/> 
+		<put-attribute name="body" value="/jsp/fileProcessingInp.jsp"/> 
+	</definition> 
+	
+	 <!--  End File Processing tiles -->
+	 	
+	 <!--  Start Bonus Processing tiles -->
+	 
+	 <definition name="/bonusProcessing.tiles" extends="baseLayout"> 
+		<put-attribute name="title" value="Dealer Performance Bonus - Process Bonus"/> 
+		<put-attribute name="body" value="/jsp/processBonus.jsp"/> 
+	</definition>
+	 
+	 <!--  End Bonus Processing tiles -->
+	 	
+	 	
+	 <!--  Start Reports tiles -->
+	 
+	 <definition name="/reports.tiles" extends="baseLayout"> 
+		<put-attribute name="title" value="Dealer Performance Bonus - NetstarReport"/> 
+		<put-attribute name="body" value="/jsp/netStarReportGen.jsp"/> 
+	</definition>
+	
+	<definition name="/netStarReportPopUp.tiles" extends="baseLayoutNetstarReportPopup"> 
+		<put-attribute name="title" value="Dealer Performance Bonus - NetstarReportPopUp"/> 
+		<put-attribute name="body" value="/jsp/netStarReportPopUp.jsp"/> 
+	</definition>
+	
+	<definition name="/ldrshipReportPopUp.tiles" extends="baseLayoutNetstarReportPopup"> 
+		<put-attribute name="title" value="Dealer Performance Bonus - LeadershipReportPopUp"/> 
+		<put-attribute name="body" value="/jsp/ldrshipReportPopUp.jsp"/> 
+	</definition>
+	 <!--  End Reports tiles -->
+	 	
+	 	
+ 	<!--  Start Definitions tiles -->
+ 	
+	<definition name="/dealerPrgView.tiles" extends="baseLayout"> 
+		<put-attribute name="title" value="Dealer Performance Bonus - Dealer Program"/> 
+		<put-attribute name="body" value="/jsp/dealerPrgView.jsp"/> 
+	</definition> 
+	<definition name="/dlrViewPrgList.tiles" extends="baseLayout"> 
+		<put-attribute name="title" value="Dealer Performance Bonus - Dealer Program"/> 
+		<put-attribute name="body" value="/jsp/DPBProgramList.jsp"/> 
+	</definition>
+	<definition name="/retrieveDealerProgram.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Dealer Performance Bonus - Special Dealer Program" />
+		<put-attribute name="body" value="/jsp/retrieveDealerProgram.jsp" />
+	</definition>
+	<definition name="/retrieveSpecialDlrProgram.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Dealer Performance Bonus - Special Dealer Program" />
+		<put-attribute name="body" value="/jsp/retrieveSpecialDlrProgram.jsp" />
+	</definition>
+	<definition name="/specialDlrPrgView.tiles" extends="baseLayout"> 
+		<put-attribute name="title" value="Dealer Performance Bonus - Special Dealer Program"/> 
+		<put-attribute name="body" value="/jsp/specialDlrPrgView.jsp"/> 
+	</definition>
+	
+	<!-- LDRSP & ACCID Mapping Start -->
+	<definition name="/ldrShipBonusView.tiles" extends="baseLayout"> 
+		<put-attribute name="title" value="Dealer Performance Bonus - LeaderShip Bonus"/> 
+		<put-attribute name="body" value="/jsp/DPBLeadershipBonusDefinition.jsp"/> 
+	</definition>
+	<definition name="/ldrShipBonusListView.tiles" extends="baseLayout"> 
+		<put-attribute name="title" value="Dealer Performance Bonus - LeaderShip Bonus List"/> 
+		<put-attribute name="body" value="/jsp/DPBLeadershipBonusList.jsp"/> 
+	</definition>
+	<definition name="/ldrShipBonusViews.tiles" extends="baseLayout"> 
+		<put-attribute name="title" value="Dealer Performance Bonus - LeaderShip Bonus"/> 
+		<put-attribute name="body" value="/jsp/DPBLeadershipBonusDefinitionViews.jsp"/> 
+	</definition>
+	
+	<definition name="/prgDlrAccMapping.tiles" extends="baseLayout"> 
+		<put-attribute name="title" value="Dealer Performance Bonus - Program Account"/> 
+		<put-attribute name="body" value="/jsp/dlrPrgAccountId.jsp"/> 
+	</definition>	
+	<!-- LDRSP & ACCID Mapping End -->
+	
+	<!-- Strat input file definition and list -->
+	<definition name="/inputFileDef.tiles" extends="baseLayout"> 
+		<put-attribute name="title" value="Dealer Performance Bonus - File Format"/> 
+		<put-attribute name="body" value="/jsp/DPBInputFileDef.jsp"/> 
+	</definition>
+
+	<definition name="/inputFileListView.tiles" extends="baseLayout"> 
+		<put-attribute name="title" value="Dealer Performance Bonus - File List"/> 
+		<put-attribute name="body" value="/jsp/DPBInputFileDefList.jsp"/> 
+	</definition>
+	
+	<definition name="/inputFileReadOnly.tiles" extends="baseLayout"> 
+		<put-attribute name="title" value="Dealer Performance Bonus - File List"/> 
+		<put-attribute name="body" value="/jsp/DPBInputFileReadOnlyView.jsp"/> 
+	</definition>
+		<!-- End input file definition and list -->
+	<definition name="/fileFormatView.tiles" extends="baseLayout"> 
+		<put-attribute name="title" value="Dealer Performance Bonus - File Format"/> 
+		<put-attribute name="body" value="/jsp/fileFormatDef.jsp"/> 
+	</definition>
+	<definition name="/fileFormatListView.tiles" extends="baseLayout"> 
+		<put-attribute name="title" value="Dealer Performance Bonus - File Format"/> 
+		<put-attribute name="body" value="/jsp/FileFormatDefList.jsp"/> 
+	</definition>
+	<definition name="/fileFormatReadOnlyView.tiles" extends="baseLayout"> 
+		<put-attribute name="title" value="Dealer Performance Bonus - File Format"/> 
+		<put-attribute name="body" value="/jsp/FileFormatReadOnlyView.jsp"/> 
+	</definition>
+	<!-- Start report definition -->
+	<definition name="/reportDefView.tiles" extends="baseLayout"> 
+		<put-attribute name="title" value="Dealer Performance Bonus - Report Definition"/> 
+		<put-attribute name="body" value="/jsp/ReportDefinition.jsp"/> 
+	</definition>
+	
+	<definition name="/reportDefListView.tiles" extends="baseLayout"> 
+		<put-attribute name="title" value="Dealer Performance Bonus - Report Definition List"/> 
+		<put-attribute name="body" value="/jsp/ReportDefinitionList.jsp"/> 
+	</definition>
+	
+	<definition name="/reportDefReadOnlyView.tiles" extends="baseLayout"> 
+		<put-attribute name="title" value="Dealer Performance Bonus - Report Definition"/> 
+		<put-attribute name="body" value="/jsp/ReportDefinitionReadOnlyView.jsp"/> 
+	</definition>
+	<!-- End report definition -->
+	
+	<!-- Start report query definition -->
+	<definition name="/reportQueryView.tiles" extends="baseLayout"> 
+		<put-attribute name="title" value="Dealer Performance Bonus - Report Query"/> 
+		<put-attribute name="body" value="/jsp/reportQueryDef.jsp"/> 
+	</definition>
+	
+	<definition name="/reportQueryListView.tiles" extends="baseLayout"> 
+		<put-attribute name="title" value="Dealer Performance Bonus -Report Query List View "/> 
+		<put-attribute name="body" value="/jsp/reportQueryDefList.jsp"/> 
+	</definition>
+	
+	<definition name="/reportQueryReadOnly.tiles" extends="baseLayout"> 
+		<put-attribute name="title" value="Dealer Performance Bonus -Report Query Read Only"/> 
+		<put-attribute name="body" value="/jsp/reportQueryDefView.jsp"/> 
+	</definition>
+	<!-- End report query definition -->
+	
+	
+	<definition name="/defineBlockingCondition.tiles" extends="baseLayout"> 
+		<put-attribute name="title" value="Dealer Performance Bonus - Blocking Condition"/> 
+		<put-attribute name="body" value="/jsp/conditionDef.jsp"/> 
+	</definition> 
+	<definition name="/listBlockingCondition.tiles" extends="baseLayout"> 
+		<put-attribute name="title" value="Dealer Performance Bonus - Blocking Condition"/> 
+		<put-attribute name="body" value="/jsp/conditionListView.jsp"/> 
+	</definition> 
+	 <definition name="/conditionReadonlyView.tiles" extends="baseLayout"> 
+		<put-attribute name="title" value="Dealer Performance Bonus - Blocking Condition"/> 
+		<put-attribute name="body" value="/jsp/conditionReadOnlyView.jsp"/> 
+	</definition>  
+	
+	<definition name="/rtlMonthView.tiles" extends="baseLayout"> 
+		<put-attribute name="title" value="Dealer Performance Bonus - Retail Calender"/> 
+		<put-attribute name="body" value="/jsp/rtllMonthDefinition.jsp"/> 
+	</definition>
+	<definition name="/processCalView.tiles" extends="baseLayout"> 
+		<put-attribute name="title" value="Dealer Performance Bonus - Retail Calender"/> 
+		<put-attribute name="body" value="/jsp/DPBProcessCalendarDefinition.jsp"/> 
+	</definition>
+ 	<!--  End Definations tiles -->
+	<definition name="/vehicleConditionDef.tiles" extends="baseLayout"> 
+		<put-attribute name="title" value="Dealer Performance Bonus - File Format"/> 
+		<put-attribute name="body" value="/jsp/vehicleConditionDef.jsp"/> 
+	</definition>
+		<!-- Jeevan Changes Starts -->
+	<!-- File Processing Tiles -->
+	<definition name="/processInpFile.tiles" extends="baseLayout"> 
+		<put-attribute name="title" value="Dealer Performance Bonus - File Processing Inp"/> 
+		<put-attribute name="body" value="/jsp/fileProcessingInp.jsp"/> 
+	</definition>
+
+	<definition name="/genPayFile.tiles" extends="baseLayout"> 
+		<put-attribute name="title" value="Dealer Performance Bonus - File Processing Inp"/> 
+		<put-attribute name="body" value="/jsp/genPayFile.jsp"/> 
+	</definition>
+	
+	<definition name="/genReports.tiles" extends="baseLayout"> 
+		<put-attribute name="title" value="Dealer Performance Bonus - File Processing Inp"/> 
+		<put-attribute name="body" value="/jsp/genReportFile.jsp"/> 
+	</definition>
+	
+	<!-- File Processing Tiles -->
+	
+	<!-- Bonus Processing Starts -->
+	<definition name="/bonusProcessing.tiles" extends="baseLayout"> 
+		<put-attribute name="title" value="Dealer Performance Bonus - Process Bonus"/> 
+		<put-attribute name="body" value="/jsp/processBonus.jsp"/> 
+	</definition>
+	
+	
+	<definition name="/processLdrBonus.tiles" extends="baseLayout"> 
+		<put-attribute name="title" value="Dealer Performance Bonus - Process Bonus"/> 
+		<put-attribute name="body" value="/jsp/procLdrBonus.jsp"/> 
+	</definition>
+	
+
+	<definition name="/errorPage.tiles" extends="baseLayout">
+	<put-attribute name="title" value="Dealer Performance Bonus - Error Page"/> 
+	<put-attribute name="body" value="/jsp/errorPage.jsp"/> 
+	</definition> 
+
+	
+	<!-- Bonus Processing Ends -->
+	<definition name="/homeOfficeReport.tiles" extends="baseLayout">
+  		<put-attribute name="title" value="Dealer Performance Bonus - Home Office Report" /> 
+  		<put-attribute name="body" value="/jsp/homeOffice.jsp" /> 
+  	</definition>
+  	<definition name="/blockVehicleReport.tiles" extends="baseLayout">
+  		<put-attribute name="title" value="Dealer Performance Bonus - Block Vehicle Report" /> 
+  		<put-attribute name="body" value="/jsp/vehicleBlockingReport.jsp" /> 
+  	</definition>
+  	<definition name="/generateReport.tiles" extends="baseLayout">
+  		<put-attribute name="title" value="Dealer Performance Bonus - Block Vehicle Report" /> 
+  		<put-attribute name="body" value="/jsp/retailPaymentReport.jsp" /> 
+  	</definition>
+  	<definition name="/popupProcess.tiles" extends="baseLayout">
+  		<put-attribute name="title" value="Dealer Performance Bonus - Block Vehicle Report" /> 
+  		<put-attribute name="body" value="/jsp/viewGenPayPopUp.jsp" /> 
+  	</definition>
+	<!-- Jeevan Changes Ends -->
+	
+	<!--  Nikhil changes start --> 
+	<definition name="/reportDefView.tiles" extends="baseLayout">
+  		<put-attribute name="title" value="Dealer Performance Bonus - Report Definition" /> 
+  		<put-attribute name="body" value="/jsp/ReportDefinition.jsp" /> 
+ 	</definition>
+	<definition name="/reportContentDefView.tiles" extends="baseLayout">
+  		<put-attribute name="title" value="Dealer Performance Bonus - Report Content Definition" /> 
+  		<put-attribute name="body" value="/jsp/ReportContentDefinition.jsp" /> 
+	</definition>
+	<definition name="/reportContentDefList.tiles" extends="baseLayout">
+  		<put-attribute name="title" value="Dealer Performance Bonus - Report Content Definition" /> 
+  		<put-attribute name="body" value="/jsp/reportContentDefinitionList.jsp" /> 
+	</definition>
+	<definition name="/reportContentReadOnlyView.tiles" extends="baseLayout">
+  		<put-attribute name="title" value="Dealer Performance Bonus - Report Content Definition" /> 
+  		<put-attribute name="body" value="/jsp/reportContentReadOnlyView.jsp" /> 
+	</definition>
+	
+ 	<definition name="/processCalView.tiles" extends="baseLayout">
+  		<put-attribute name="title" value="Dealer Performance Bonus - Retail Calender" /> 
+  		<put-attribute name="body" value="/jsp/DPBProcessCalendarDefinition.jsp" /> 
+ 	</definition>
+ 	<definition name="/processPopupView.tiles" extends="baseLayoutPopup">
+		<put-attribute name="title" value="Dealer Performance Bonus - File Process Definition" /> 
+		<put-attribute name="body" value="/jsp/DPBProcessPopupView.jsp" /> 
+ 	</definition>
+	<!--  Nikhil changes end -->
+<!-- Jeevan Changes Starts-->
+<definition name="/retailsAndPaymentsReport.tiles" extends="baseLayout">
+  		<put-attribute name="title" value="Dealer Performance Bonus - Retail And Payment" /> 
+  		<put-attribute name="body" value="/jsp/retailsAndPaymentsReport.jsp" /> 
+  	</definition>
+	
+<definition name="/viewFileProcpopup.tiles" extends="baseLayoutPopup">
+  	<put-attribute name="title" value="Dealer Performance Bonus - File Process " /> 
+  	<put-attribute name="body" value="/jsp/viewFileProcpopup.jsp" /> 
+  </definition>
+ <!-- Need To Cin --> 
+  <definition name="/viewGenPayPopUp.tiles" extends="baseLayoutPopup">
+  	<put-attribute name="title" value="Dealer Performance Bonus - File Process " /> 
+  	<put-attribute name="body" value="/jsp/viewGenPayPopUp.jsp" /> 
+  </definition>
+   <!-- Need To Cin --> 
+  <definition name="/viewGenReportpopup.tiles" extends="baseLayoutPopup">
+  	<put-attribute name="title" value="Dealer Performance Bonus - File Process " /> 
+  	<put-attribute name="body" value="/jsp/viewGenReportpopup.jsp" /> 
+  </definition>
+  
+  <definition name="/viewProcBonusProcpopup.tiles" extends="baseLayoutPopup">
+  	<put-attribute name="title" value="Dealer Performance Bonus - Bonus Process " /> 
+  	<put-attribute name="body" value="/jsp/viewProcBonusProcpopup.jsp" /> 
+  </definition>
+  
+  <definition name="/viewLdrBonuspopup.tiles" extends="baseLayoutPopup">
+  	<put-attribute name="title" value="Dealer Performance Bonus - Bonus Process " /> 
+  	<put-attribute name="body" value="/jsp/viewLdrBonuspopup.jsp" /> 
+  </definition>
+<!-- Jeevan Changes Ends-->
+  <definition name="/dlrReserveExceptionReport.tiles" extends="baseLayout">
+ 		<put-attribute name="title" value="Dealer Performance Bonus - Dealer Reserve Exception Report" /> 
+ 		<put-attribute name="body" value="/jsp/dlrReserveExceptionReport.jsp" /> 
+  </definition>
+
+<definition name="/wait.tiles" extends="baseLayout">
+ 		<put-attribute name="title" value="Dealer Performance Bonus - Dealer Reserve Exception Report" /> 
+ 		<put-attribute name="body" value="/jsp/wait.jsp" /> 
+  </definition>
+  
+<definition name="/waitReport.tiles" extends="baseLayoutReportPopup">
+ 	<put-attribute name="title" value="Dealer Performance Bonus - Report Generation" /> 
+ 	<put-attribute name="body" value="/jsp/waitReport.jsp" /> 
+</definition>
+
+
+<definition name="/retailDateChange.tiles" extends="baseLayout">
+ 	<put-attribute name="title" value="Dealer Performance Bonus - Retail Date Change" /> 
+ 	<put-attribute name="body" value="/jsp/retailDateChange.jsp" /> 
+</definition>
+
+<definition name="/schTime.tiles" extends="baseLayout">
+ 	<put-attribute name="title" value="Dealer Performance Bonus - Schedule Time" /> 
+ 	<put-attribute name="body" value="/jsp/scheduleTime.jsp" /> 
+</definition>
+
+<definition name="/fileCopy.tiles" extends="baseLayout">
+ 	<put-attribute name="title" value="Dealer Performance Bonus - File Copy" /> 
+ 	<put-attribute name="body" value="/jsp/fileCopy.jsp" /> 
+</definition>
+
+<definition name="/amgPerfAddOrEdit.tiles" extends="baseLayout">
+ 	<put-attribute name="title" value="Dealer Performance Bonus - AMG Performance Bonus Report Add/Edit" /> 
+ 	<put-attribute name="body" value="/jsp/amgPerfAddOrEdit.jsp" /> 
+</definition>
+<definition name="/ldrshipReportGen.tiles" extends="baseLayout">
+ 	<put-attribute name="title" value="Dealer Performance Bonus - Leadership Report" /> 
+ 	<put-attribute name="body" value="/jsp/ldrshipReportGen.jsp" /> 
+</definition>
+
+<definition name="/ldrwaitReport.tiles" extends="baseLayoutReportPopup">
+ 	<put-attribute name="title" value="Dealer Performance Bonus - LeadeshipReport Generation" /> 
+ 	<put-attribute name="body" value="/jsp/ldrwaitReport.jsp" /> 
+</definition>
+
+<definition name="/viewRtlCalpopup.tiles" extends="baseLayoutPopup">
+  	<put-attribute name="title" value="Retail Calendar " /> 
+  	<put-attribute name="body" value="/jsp/viewRtlCalpopup.jsp" /> 
+</definition>
+
+</tiles-definitions>

@@ -1,0 +1,530 @@
+body#admin{
+	background: #e4e4e4 url(../images/img_bkg3.gif) repeat-y;
+}
+
+.pageTitle{
+	font-size: x-large;
+	font-weight: lighter;
+	color: #666666;
+	margin-bottom: 16px;
+}
+
+.pageTitle span{
+	font-size: 16px;
+	font-weight: bold;
+	color: #666666;
+	margin-bottom: 16px;
+}
+
+.pageTitleIndent{
+	font-size: 16px;
+	font-weight: bold;
+	color: #666666;
+	margin-left: 20px;
+	margin-bottom: 16px;
+}
+
+.itemHeader{
+	color: #666666;
+	font-weight: bold;
+	vertical-align: middle;
+}
+
+.subText{
+	color: #666666;
+	font-weight: normal;
+	padding: 5px;
+}
+
+.grayText{
+	color: #666666;
+	font-weight: normal;
+}
+
+.cancheck {
+	color: green;
+	}
+	
+.checkedbyadmin {
+	color: blue;
+	}
+	
+.checkedbyu {
+	color: red;
+	}		
+
+div.hr{
+	border-bottom: solid 1px #C1C1C1;
+	margin: 10px 0 10px 0;
+}
+
+.gray{
+	 background-color: #C1C1C1;
+}
+.orange{
+	color: #00adef;
+	font-weight: bold;
+}
+
+.inline{
+	display: inline;
+	padding: 0;
+}
+
+.inline input{
+	padding: 0px 0 10px 0;
+}
+
+div.widthMedium{
+	width: 505px;
+}
+
+div#adminContentArea{
+	width: 938px;
+	margin: 0;
+	padding: 18px 42px 40px 20px;
+	clear: both;
+	background: #FFFFFF;
+}
+
+div#adminContentArea a:link, div#adminContentArea a:visited
+{
+	color: #003366;
+	text-decoration: none;
+}
+
+div#adminContentArea a:hover, div#adminContentArea a:active
+{
+	color: #00adef;
+	text-decoration: none;
+}
+
+div.contentBorder {
+	border-top: 0;
+	border-right: solid 1px #E4E4E4;
+	border-bottom: solid 1px #E4E4E4;
+	border-left: solid 1px #E4E4E4;
+	padding: 10px;
+}
+
+/* 
+ * For cms_copypage.aspx and cms_movepage.aspx 
+ * Override div.contentBorder style, so there is a top border
+ */
+div.cmsAdminNoTab {
+	border-top: solid 1px #E4E4E4;
+}
+	
+div.contentBorder div.TX1
+{
+	border-top: 0;
+	width: 480px;
+	padding: 0px;
+	margin: 10px 0 10px 0;
+}
+ul#tabNav
+{
+	list-style-type: none;
+	padding: 0 0 21px 0;
+	margin: 0;
+	border-bottom: 1px solid #E4E4E4;
+}
+
+ul#tabNav li
+{
+	float: left;
+	height: 17px;
+	padding: 3px 10px 0 10px;
+	background-color: #F0F0F0;
+	border: 1px solid #E4E4E4;
+}
+
+ul#tabNav li.on
+{
+	float: left;
+	height: 17px;
+	background-color: #FFFFFF;
+	border-top: solid 1px #E4E4E4;
+	border-right: solid 1px #E4E4E4;
+	border-bottom: solid 1px #FFFFFF;
+	border-left: solid 1px #E4E4E4;
+}
+
+ul#tabNav li.on a:link, ul#tabNav li.on a:visited
+{
+	color: #00adef;
+	text-decoration: none;
+	font-size:11px;
+}
+
+ul#tabNav a:link, ul#tabNav a:link
+{
+	display: block;
+	text-decoration: none;
+	font-size:11px;
+}
+
+ul#tabNav li.off a:link, ul#tabNav li.off a:visited
+{
+	color: #003366;
+	text-decoration: none;
+	font-size:11px;
+}
+
+ul#tabNav li.off a:hover, ul#tabNav li.off a:active
+{
+	color: #00adef;
+	text-decoration: none;
+	font-size:11px;
+}
+
+ul#tabNav a:link, ul#tabNav a:link
+{
+	display: block;
+	text-decoration: none;
+	font-size:11px;
+}
+
+/* ======================= START HEADER AREA STYLES ======================= 
+body#admin div#headerareaframe
+{
+	margin: 0;
+	padding: 0;
+	background: #e4e4e4;
+	width: 995px;
+	height: 100px;
+}
+
+body#admin div#brandmark
+{
+	width: 98px;
+	height: 71px;
+	padding: 16px 37px 13px 35px;
+	float: left;
+}
+
+body#admin div#headerarea
+{
+	margin: 0;
+	padding: 0;
+	width: 825px;
+	height: 100px;
+	float: left;
+	background: #e4e4e4 url(../images/img_headerbkg.gif) repeat-x;
+}
+
+body#admin div#nav5
+{
+	width: 995px;
+}
+/* ======================= END HEADER AREA STYLES ======================= */
+
+div.listLinks{
+	margin-top: 0;
+	margin-bottom: 12px;
+	padding: 0;
+}
+
+div.listLinks ul{
+	padding: 0;
+	margin: 0;
+}
+
+div.listLinks ul a{
+	font-size: 11px;
+}
+
+div.listLinks ul li{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 11px;
+}
+
+div.listLinks ul li.on{
+	list-style: none;
+	margin: 0;
+	padding: 0px 0px 0px 10px;
+	border-top: 1px solid #FFFFFF;
+}
+
+div.listlinks a, div.listLinks ul a:link, div.listLinks ul a:visited{
+	color: #036;
+	text-decoration: none;
+	background: url(../images/nav/arrownav_off_blue.gif) 0px 4px no-repeat;
+	padding: 0px 0px 0px 10px;
+	font-size: 11px;
+}
+
+div.listLinks ul a:hover, div.listLinks ul a:active{
+	color: #00adef;
+	text-decoration: none;
+	background: url(../images/nav/arrownav_on.gif) 0px 4px no-repeat;
+	padding: 0px 0px 0px 10px;
+	font-size: 11px;
+}
+
+a.adminLinks, a.adminLinks:link, a.adminLinks:visited {
+	background: url('../images/btn/3d_arrow.gif') no-repeat left top;
+	padding: 3px 8px 0 24px;
+	height: 19px;
+	margin:0;
+	font-size:11px;
+	display:block;
+}
+
+a.adminLinks:hover, a.adminLinks:active{
+	background: url('../images/btn/3d_arrow.gif') no-repeat left bottom;
+	text-decoration: none;
+}
+
+table.controlTable{
+	padding: 0;
+	margin: 0;
+	border: 0;
+	width: 100%;
+}
+
+table.controlTable td{
+	padding: 5px 5px 5px 5px;
+	margin: 0;
+	border: solid 1px #E4E4E4;
+	vertical-align: top;
+	font-size: 11px;
+}
+
+table.controlTable td.center{
+	text-align: center;
+}
+
+table.controlTable tr.header td{
+	padding: 5px 5px 5px 5px;
+	color: #333333;
+	font-weight: bold;
+	background-color: #F0F0F0;
+	vertical-align: top;
+}
+
+table.controlTable tr.header td a:link, table.controlTable tr.header td a:visited {
+	color: #003366;
+	font-weight: bold;
+	text-decoration: none;
+	}
+
+table.controlTable tr.header td a:hover, table.controlTable tr.header td a:active {
+	color: #00adef;
+	font-weight: bold;
+	text-decoration: none;
+	}
+
+table.controlTable tr.odd td{
+	background-color: #FFFFFF;
+}
+
+table.controlTable tr.even td{
+	background-color: #F0F0F0;
+}
+
+table.rowSpacing td{
+	padding: 4px 0 4px 0;
+}
+
+table.colSpacing td{
+	padding: 0 5px 0 0;
+	margin: 0;
+	border: 0px solid red;
+	font-size: 11px;
+}
+
+table.colSpacing tr.first td{
+	padding: 0;
+	margin: 0;
+}
+
+table.colSpacing tr.header td{
+	color: #666666;
+	font-weight: bold;
+}
+
+/*=========Start Input styles==========*/
+
+input.adminLinks{
+	background: url(../images/admin/adminlinkarrow_off.gif) 0px 2px no-repeat;
+	font-weight: bold;
+	height: 15px;
+	color: #003366;
+	margin: 0;
+	padding: 0px 0 0px 6px;
+	border: 0;
+	font-size: 11px;
+}
+
+html[xmlns] input.adminLinks{
+	padding: 0px 0 0px 20px;
+}
+
+input.adminLinks[type="button"]:hover, input.adminLinks:hover
+{
+	color: #00adef;
+	background: url(../images/admin/adminlinkarrow_on.gif) 0px 2px no-repeat;
+}
+/* Start IE 6 - PC fix */
+/* \*/
+* html :hover input.adminLinks
+{
+	color: #00adef;
+	background: url(../images/admin/adminlinkarrow_on.gif) 0px 2px no-repeat;
+}
+
+* html a.nolink:link, * html a.nolink:visited
+{
+	border-left: 1px solid #FFFFFF;
+}
+
+/* */
+/* End IE 6 - PC fix */
+
+input.btnUp{
+	background: url(../images/admin/arrow_up_off.gif) 0px 0px no-repeat;
+	height: 20px;
+	width: 15px;
+	margin: 0 0 10px 0;
+	padding: 0;
+	border: 0;
+}
+
+input.btnUp[type="button"]:hover{
+	background: url(../images/admin/arrow_up_on.gif) 0px 0px no-repeat;
+}
+
+input.btnUp:hover{
+	background: url(../images/admin/arrow_up_on.gif) 0px 0px no-repeat;
+}
+
+/* Start IE 6 - PC fix */
+/* \*/
+* html :hover input.btnUp{
+	background: url(../images/admin/arrow_up_on.gif) 0px 0px no-repeat;
+}
+
+/* */
+/* End IE 6 - PC fix */
+
+input.btnDown{
+	background: url(../images/admin/arrow_down_off.gif) 0px 0px no-repeat;
+	height: 20px;
+	width: 20px;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+input.btnDown[type="button"]:hover, input.btnDown:hover{
+	background: url(../images/admin/arrow_down_on.gif) 0px 0px no-repeat;
+}
+
+/* Start IE 6 - PC fix */
+/* \*/
+* html :hover input.btnDown{
+	background: url(../images/admin/arrow_down_on.gif) 0px 0px no-repeat;
+}
+
+/* */
+/* End IE 6 - PC fix */
+
+a.nolink:link, a.nolink:visited{
+	text-decoration: none;
+}
+a.btnPrev{
+	background: url(../images/admin/arrow_previous_off.gif) 0px 4px no-repeat;
+	text-decoration: none;
+	width: 11px;
+	height: 11px;
+	margin: 0;
+	border: 0;
+}
+a.btnPrev:link, a.btnPrev:visited{
+	padding: 2px 4px 0px 4px;
+	background: url(../images/admin/arrow_previous_off.gif) 0px 4px no-repeat;
+}
+
+a.btnPrev:hover, a.btnPrev:active{
+	background: url(../images/admin/arrow_previous_on.gif) 0px 4px no-repeat;
+}
+
+a.btnNext{
+	background: url(../images/admin/arrow_next_off.gif) 0px 4px no-repeat;
+	text-decoration: none;
+	width: 11px;
+	height: 11px;
+	margin: 0;
+	border: 0;
+}
+
+a.btnNext:link, a.btnNext:visited{
+	padding: 2px 4px 0px 4px;
+	background: url(../images/admin/arrow_next_off.gif) 0px 4px no-repeat;
+}
+
+a.btnNext:hover, a.btnNext:active{
+	background: url(../images/admin/arrow_next_on.gif) 0px 4px no-repeat;
+}
+
+select.xsmall{
+	width: 100px;
+	margin: 0;
+	padding: 0;
+}
+
+table.radioTable input{
+	padding: 6px 5px 0 0;
+	margin: 6px 5px 0 0;
+	border: 1px solid #FFFFFF;
+}
+
+table.radioTable td{
+	padding: 0 5px 0 0;
+	margin: 0 5px 0 0;
+	border: 0;
+}
+
+.checkbox{
+	padding: 5px 0 0 0;
+}
+
+.checkbox input{
+	padding: 5px 5px 5px 0;
+	margin: 0 5px 0 0;
+}
+
+input.browseMedium{
+	width: 250px;
+}
+
+a.btnAdd, a.btnAdd:link, a.btnAdd:visited{
+	height: 22px;
+	width: 22px;
+	background: #fff url(../images/btn/3d_arrow.gif) no-repeat top left;
+	text-decoration: none;
+	display:block;
+}
+a.btnAdd:hover, a.btnAdd:active{
+	background: #fff url(../images/btn/3d_arrow.gif) no-repeat bottom left;
+}
+
+a.btnRemove, a.btnRemove:link, a.btnRemove:visited{
+	height: 22px;
+	width: 22px;
+	background: #fff url(../images/btn/3d_arrow_rem.gif) no-repeat top left;
+	text-decoration: none;
+	display:block;
+}
+
+a.btnRemove:hover, a.btnRemove:active{
+	background: #fff url(../images/btn/3d_arrow_rem.gif) no-repeat bottom left;
+}
+span.admfgrey {display:block;padding: 2px 0 2px 14px ;background: url(../images/treeview/adm_folder_grey.jpg) no-repeat left 4px;}
+span.admfblue {display:block;padding: 2px 0 2px 14px ;background: url(../images/treeview/adm_folder_blue.jpg) no-repeat left 4px;}
+span.admforange {display:block;padding: 2px 0 2px 14px ;background: url(../images/treeview/adm_folder_orange.jpg) no-repeat left 4px;}
+/*=========End Input styles==========*/

@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+   "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.custom.i18n.resources" value="global" />
+	<!-- Maximum File size = 90 MB -->
+	<constant name="struts.multipart.maxSize" value="94371840" />
+
+	<package name="MyTest" extends="struts-default" namespace="/">
+
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+
+		<interceptors>
+			<interceptor name="logging"
+				class="com.mbusa.dpb.web.interceptor.LoggingInterceptor"></interceptor>
+			<interceptor-stack name="loggingStack">
+				<interceptor-ref name="logging" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+			<interceptor name="waiting"
+				class="com.mbusa.dpb.web.interceptor.WaitingInterceptor"></interceptor>
+			<interceptor-stack name="waitingStack">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="waiting" />
+			</interceptor-stack>
+			
+			<interceptor name="ldrshipwaiting"
+				class="com.mbusa.dpb.web.interceptor.LdrshipWaitingInterceptor"></interceptor>
+			<interceptor-stack name="ldrwaitingStack">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="ldrshipwaiting" />
+			</interceptor-stack>
+			
+			<!-- <interceptor name="waiting"
+				class="com.mbusa.dpb.web.interceptor.LdrshipWaitingInterceptor"></interceptor>
+			<interceptor-stack name="waitingStack">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="waiting" />
+			</interceptor-stack> -->
+			
+		</interceptors>
+
+		<default-interceptor-ref name="loggingStack"></default-interceptor-ref>
+		
+		<global-results>
+			<result name="loginOnSessionExpire">/jsp/welcome.jsp</result>
+			<result name="errorPage" type="tiles">/errorPage.tiles</result>
+			<result name="HomePage" type="redirect">/dashBoard</result>
+			<result name="loginwithoutSSO">/jsp/LoginPage.jsp</result>
+		</global-results>
+
+
+		<action name="index">
+			<result type="redirect">/login.action</result>
+		</action>
+
+		<action name="login2">
+			<result type="redirect">/login.action</result>
+		</action>
+		
+		<action name="login" class="com.mbusa.dpb.web.common.actions.LoginAction">
+			<interceptor-ref name="loggingStack"></interceptor-ref>
+			<result name="success" type="redirect">/dashBoard</result>
+			<result name="error" type="tiles">/error.tiles</result>
+			<result name="loginPage">/jsp/welcome.jsp</result>
+		</action>
+
+		<action name="dashBoard" class="com.mbusa.dpb.web.common.actions.DPBHomeAction"
+			method="viewDashBoard">
+			<result name="viewDashBoard" type="tiles">/dashBoard.tiles</result>
+		</action>
+
+		<action name="netStarReportGen" class="com.mbusa.dpb.web.Reports.action.ReportGenerateAction"
+			method="netStarReportGen">
+			<result name="netStarReportGen" type="tiles">/reports.tiles</result>
+			<!-- <result name="genStatNetStarRpt" type="tiles">/reports.tiles</result> -->
+		</action>
+
+		<action name="reportsGenerate" class="com.mbusa.dpb.web.Reports.action.ReportGenerateAction" method="reportsGenerate">
+		 	<interceptor-ref name="waitingStack">
+				<param name="delay">2000</param>
+			</interceptor-ref>
+		 	<result name="netStarReportPopUp" type="tiles">/netStarReportPopUp.tiles</result>
+		 	<result name="wait" type = "tiles">/waitReport.tiles</result>
+		</action>
+
+	
+		<action name="dealerProgram"
+			class="com.mbusa.dpb.web.common.actions.DealerProgramAction" method="viewDealerProgram">
+			<result name="dealerPrgView" type="tiles">/dealerPrgView.tiles</result>
+			<result name="view">/jsp/success.jsp</result>
+			<result name="dealerDefineView" type="tiles">/dealerDefineView.tiles</result>
+			<result name="dashBoardView" type="tiles">/dashBoard.tiles</result>
+		</action>
+		<action name="dlrProgram" class="com.mbusa.dpb.web.common.actions.DealerProgramAction" method="submitDealerProgram">
+			<interceptor-ref name="token" />
+			<interceptor-ref name="basicStack"/>
+			<result name="dealerPrgView" type="tiles">/dealerPrgView.tiles</result>
+			<result name="invalid.token" type="redirect">/dashBoard</result>
+		</action>
+		<action name="dpbProgramList"
+			class="com.mbusa.dpb.web.common.actions.DealerProgramAction" method="viewDealerListProgram">
+			<result name="viewPrgList" type="tiles">/dlrViewPrgList.tiles </result>
+		</action>
+		<action name="dealerProgramListEdit"
+			class="com.mbusa.dpb.web.common.actions.DealerProgramAction" method="viewDealerProgram">
+			<result name="dealerPrgView" type="tiles">/dealerPrgView.tiles
+			</result>
+			<result name="retrieveDealerProgram" type="tiles">/retrieveDealerProgram.tiles
+			</result>
+			<result name="retrieveSpecialDlrProgram" type="tiles">/retrieveSpecialDlrProgram.tiles
+			</result>
+		</action>
+		<action name="specialDealerProgram" class="com.mbusa.dpb.web.common.actions.SpecialDealerProgramAction" method="viewSpecialProgram">
+			<result name="specialProgramView" type="tiles">/specialDlrPrgView.tiles</result>
+			<result name="specialProgramSave" type="tiles">/specialDlrPrgView.tiles</result>
+			<result name="retrieveSpecialDlrProgram" type="tiles">/retrieveSpecialDlrProgram.tiles</result>
+			<result name="dealerPrgView" type="tiles">/dealerPrgView.tiles</result>
+		</action>
+		
+		<action name="dlrSpecialProgram" class="com.mbusa.dpb.web.common.actions.SpecialDealerProgramAction" method="saveSpecialProgram">
+		<interceptor-ref name="token" />
+			<interceptor-ref name="basicStack"/>
+			<result name="specialProgramSave" type="tiles">/specialDlrPrgView.tiles</result>
+			<result name="invalid.token" type="redirect">/dashBoard</result>
+		</action>
+		<action name="leadershipBonusDef" class="com.mbusa.dpb.web.common.actions.LdrshipBonusAction" method="viewLdrshipBonusDef">
+			<result name="ldrShipBonusView" type="tiles">/ldrShipBonusView.tiles</result>
+			<result name="ldrShipBonusDefine" type="tiles">/ldrShipBonusDefine.tiles</result>
+		</action>
+		<action name="leadershipBonusDefSubmit" class="com.mbusa.dpb.web.common.actions.LdrshipBonusAction" method="getLdrShipBonus">
+			<interceptor-ref name="token" />
+			<interceptor-ref name="basicStack"/>
+			<result name="ldrShipBonusView" type="tiles">/ldrShipBonusView.tiles</result>
+			<result name="invalid.token" type="redirect">/dashBoard</result>
+		</action>
+		<action name="leadershipBonusDefFYRchange"
+			class="com.mbusa.dpb.web.common.actions.LdrshipBonusAction" method="viewLdrshipBonusDefFYRchange">
+			<result name="ldrShipBonusView" type="tiles">/ldrShipBonusView.tiles</result>
+			<result name="ldrShipBonusDefine" type="tiles">/ldrShipBonusDefine.tiles</result>
+		</action>
+		<action name="ldrShipBonusList"	class="com.mbusa.dpb.web.common.actions.LdrshipBonusListAction"	method="getLdrShipBonusList">
+			<result name="ldrShipBonusListView" type="tiles">/ldrShipBonusListView.tiles</result>
+		</action>
+		<action name="leadershipBonusDefs" class="com.mbusa.dpb.web.common.actions.LdrshipBonusAction" method="getLdrshipBonusDefDetails">
+			<result name="ldrShipBonusView" type="tiles">/ldrShipBonusView.tiles</result>
+			<result name="ldrShipBonusDefine" type="tiles">/ldrShipBonusDefine.tiles</result>
+			<result name="ldrShipBonusViews" type="tiles">/ldrShipBonusViews.tiles</result>
+		</action>
+
+		<action name="prgDlrAccMapping" class="com.mbusa.dpb.web.common.actions.ProgramAccountAction" method="viewAccountIDMapping">
+			<result name="programAccountView" type="tiles">/prgDlrAccMapping.tiles</result>
+			<result name="programAccountDefine" type="tiles">/prgDlrAccMapping.tiles</result>
+		</action>
+
+		<action name="inputFile" class="com.mbusa.dpb.web.common.actions.InputFileAction" method="getFileDetails">
+			<result name="inputFileView" type="tiles">/inputFileDef.tiles</result>
+			<result name="inputFileReadOnlyView" type="tiles">/inputFileReadOnly.tiles</result>
+		</action>
+		<action name="saveInputFile" class="com.mbusa.dpb.web.common.actions.InputFileAction" method="saveFileDefinition">
+			<interceptor-ref name="token" />
+			<interceptor-ref name="basicStack"/>
+			<result name="inputFileDefine" type="tiles">/inputFileDef.tiles</result>
+			<result name="invalid.token" type="redirect">/dashBoard</result>
+		</action>
+		<action name="inputFileList"
+			class="com.mbusa.dpb.web.common.actions.InputFileListAction" method="getFileListDetails">
+			<result name="inputFileListView" type="tiles">/inputFileListView.tiles
+			</result>
+		</action>
+		
+		
+		<action name="fileformatDef" class="com.mbusa.dpb.web.common.actions.FileFormatAction" method="getFileFormatDetails">
+			<result name="fileFormatView" type="tiles">/fileFormatView.tiles</result>
+			<result name="fileFormatViewDefine" type="tiles">/fileFormatView.tiles</result>
+			<result name="fileFormatReadOnlyView" type="tiles">/fileFormatReadOnlyView.tiles</result>
+		</action>
+		<action name="saveFileFormatDef" class="com.mbusa.dpb.web.common.actions.FileFormatAction" method="saveFileFormatDetails">
+			<interceptor-ref name="token" />
+			<interceptor-ref name="basicStack"/>
+			<result name="invalid.token" type="redirect">/dashBoard</result>
+			<result name="fileFormatViewDefine" type="tiles">/fileFormatView.tiles</result>
+		</action>
+		<action name="fileformatList" class="com.mbusa.dpb.web.common.actions.FileFormatListAction" method="getFileFormatListDetails">
+			<result name="fileFormatListView" type="tiles">/fileFormatListView.tiles</result>
+		</action>
+
+		<action name="reportDef" class="com.mbusa.dpb.web.common.actions.ReportDefinitionAction" method="getNewReportDefinition">
+			<result name="reportDefView" type="tiles">/reportDefView.tiles</result>
+			<result name="reportDefReadOnlyView" type="tiles">/reportDefReadOnlyView.tiles</result>
+		</action>
+		<action name="saveReportDef" class="com.mbusa.dpb.web.common.actions.ReportDefinitionAction" method="saveReportDefinition">
+			<interceptor-ref name="token" />
+			<interceptor-ref name="basicStack"/>
+			<result name="invalid.token" type="redirect">/dashBoard</result>
+			<result name="reportDefView" type="tiles">/reportDefView.tiles</result>
+		</action>
+		<action name="reportDefList" class="com.mbusa.dpb.web.common.actions.ReportDefinitionList" method="getReportDefintionList">
+			<result name="reportDefListView" type="tiles">/reportDefListView.tiles</result>
+		</action>
+
+		<action name="reportQueryList" class="com.mbusa.dpb.web.common.actions.ReportQueryListAction" method="showReportQueryList"> 
+     		<result name="reportQueryList" type="tiles">/reportQueryListView.tiles</result>
+     	</action>
+	
+		<action name="reportQueryDef" class="com.mbusa.dpb.web.common.actions.ReportQueryDefinitionAction" method="getReportQueryDefinition"> 
+	     	<result name="reportQueryDefView" type="tiles">/reportQueryView.tiles</result>
+	     	<result name="reportQueryEdit" type="tiles">/reportQueryView.tiles</result>
+	     	<result name="reportQueryReadOnly" type="tiles">/reportQueryReadOnly.tiles</result>
+	     	<result name="viewDashBoard" type="tiles">/dashBoard</result>
+     	</action> 
+
+		<action name="reportQueryDefSave" class="com.mbusa.dpb.web.common.actions.ReportQueryDefinitionAction" method="saveReportQueryDefinition"> 
+			<interceptor-ref name="token" />
+			<interceptor-ref name="basicStack"/>
+			<result name="invalid.token" type="redirect">/dashBoard</result>
+			<result name="reportQueryDef" type="tiles">/reportQueryView.tiles</result>
+		</action> 
+
+		<action name="conditionDefinition" class="com.mbusa.dpb.web.common.actions.ConditionDefinitionAction" method="viewCondition">
+			<result name="conditionDefView" type="tiles">/defineBlockingCondition.tiles</result>
+			<result name="conditionDefReadOnlyView" type="tiles">/conditionReadonlyView.tiles</result>
+			<result name="HomePage" type="redirect">/dashBoard</result>
+			<result name="blockConditionDefine" type="tiles">/defineBlockingCondition.tiles</result>
+			<result name="conditionpage" type="tiles">/defineBlockingCondition.tiles</result>
+		</action>
+		<action name="conditionDefActionToken" class="com.mbusa.dpb.web.common.actions.ConditionDefinitionAction" method="saveCondition">
+			<interceptor-ref name="token" />
+			<interceptor-ref name="basicStack"/>
+			<result name="blockConditionDefine" type="tiles">/defineBlockingCondition.tiles</result>
+			<result name="invalid.token" type="redirect">/dashBoard</result>
+		</action>
+		<action name="conditionListView"
+			class="com.mbusa.dpb.web.common.actions.ConditionListAction" method="getCondtionsList">
+			<result name="HomePage" type="redirect">/dashBoard</result>
+			<result name="conditionList" type="tiles">/listBlockingCondition.tiles
+			</result>
+		</action>
+
+		<action name="rtlMonthDef"
+			class="com.mbusa.dpb.web.common.actions.RtlMonthDefAction" method="getCurrentRetailMonth">
+			<result name="rtlMonthView" type="tiles">/rtlMonthView.tiles</result>
+			<result name="saveRtlMonth" type="tiles">/rtlMonthView.tiles</result>
+			<result name="viewDashBoard" type="tiles">/dashBoard</result>
+		</action>
+
+		<action name="processCalDef" class="com.mbusa.dpb.web.common.actions.ProcessCalDefAction" method="getCurrentMonthProcess">
+			<result name="processCalView" type="tiles">/processCalView.tiles</result>
+		</action>
+
+		<action name="vehicleConditionDef"
+			class="com.mbusa.dpb.web.common.actions.VehicleConditionDefAction"
+			method="viewVehicleConditions">
+			<result name="vehicleConditionView" type="tiles">/vehicleConditionDef.tiles
+			</result>
+		</action>
+		<action name="blockVehicleCondition"
+			class="com.mbusa.dpb.web.common.actions.VehicleConditionDefAction"
+			method="viewVehicleConditions">
+			<result name="vehicleConditionView" type="tiles">/vehicleConditionDef.tiles
+			</result>
+		</action>
+
+		<action name="fileProcessingInp"
+			class="com.mbusa.dpb.web.fileProcess.ProcessInputFileAction" method="processInpFile">
+			<result name="processInpFile" type="tiles">/processInpFile.tiles
+			</result>
+		</action>
+		
+		<action name="fileProcessingInpStartProc"
+			class="com.mbusa.dpb.web.fileProcess.ProcessInputFileAction" method="startProcessCall">
+			<interceptor-ref name="basicStack"/>
+			<interceptor-ref name="tokenSession" />
+			<interceptor-ref name="execAndWait">
+				<param name="delay">1000</param>
+			</interceptor-ref>
+			<result name="startProcessInpFile" type="redirect">/fileProcessingInp.action
+			</result>
+			<result name="wait" type = "tiles">/wait.tiles</result>
+		    <result name="invalid.token" type="redirect">/fileProcessingInp.action
+			</result>
+		</action>
+		
+		
+
+		<action name="genPayFile"
+			class="com.mbusa.dpb.web.fileProcess.GeneratePaymentFileAction"
+			method="genPaymentFiles">
+			<result name="genPayFile" type="tiles">/genPayFile.tiles</result>
+		</action>
+		
+		<action name="genPayFileStartProc"
+			class="com.mbusa.dpb.web.fileProcess.GeneratePaymentFileAction"
+			method="startProcessCall">
+			<interceptor-ref name="basicStack"/>
+			<interceptor-ref name="tokenSession" />
+			<interceptor-ref name="execAndWait">
+				<param name="delay">1000</param>
+			</interceptor-ref>
+			<result name="startProcessInpFile" type="redirect">/genPayFile.action
+			</result>
+			<result name="wait" type = "tiles">/wait.tiles</result>
+		    <result name="invalid.token" type="redirect">/genPayFile.action
+			</result>
+		</action>
+		
+		<action name="genReports"
+			class="com.mbusa.dpb.web.fileProcess.GenerateReportAction" method="genReports">
+			<result name="genReports" type="tiles">/genReports.tiles</result>
+		</action>
+
+		<action name="genReportsStartProc"
+			class="com.mbusa.dpb.web.fileProcess.GenerateReportAction" method="startProcessCall">
+			<interceptor-ref name="basicStack"/>
+			<interceptor-ref name="tokenSession" />
+			<interceptor-ref name="execAndWait">
+				<param name="delay">1000</param>
+			</interceptor-ref>
+			<result name="startProcessInpFile" type="redirect">/genReports.action
+			</result>
+			<result name="wait" type = "tiles">/wait.tiles</result>
+		    <result name="invalid.token" type="redirect">/genReports.action
+			</result>
+		</action>
+
+		<action name="bonusProcessing"
+			class="com.mbusa.dpb.web.bonusProcess.action.ProcessBonusAction"
+			method="processBonus">
+			<result name="processBonus" type="tiles">/bonusProcessing.tiles
+			</result>
+		</action>
+		
+		<action name="bonusProcessingStartProc"
+			class="com.mbusa.dpb.web.bonusProcess.action.ProcessBonusAction"
+			method="startProcessCall">
+			<interceptor-ref name="basicStack"/>
+			<interceptor-ref name="tokenSession" />
+			<interceptor-ref name="execAndWait">
+				<param name="delay">1000</param>
+			</interceptor-ref>
+			<result name="startProcessBnsProc" type="redirect">/bonusProcessing.action
+			</result>
+			<result name="wait" type = "tiles">/wait.tiles</result>
+			<result name="invalid.token" type="redirect">/bonusProcessing.action
+			</result>
+		</action>
+
+		<action name="processLdrBonus"
+			class="com.mbusa.dpb.web.bonusProcess.action.ProcessLdrBonusAction"
+			method="processLeadershipBonus">
+			<result name="processLdrBonus" type="tiles">/processLdrBonus.tiles
+			</result>
+		</action>
+		
+		<action name="processLdrBonusStartProc"
+			class="com.mbusa.dpb.web.bonusProcess.action.ProcessLdrBonusAction"
+			method="startProcessCall">
+			<interceptor-ref name="basicStack"/>
+			<interceptor-ref name="tokenSession" />
+			<interceptor-ref name="execAndWait">
+				<param name="delay">1000</param>
+			</interceptor-ref>
+			<result name="startProcessBnsProc" type="redirect">/processLdrBonus.action
+			</result>
+			<result name="wait" type = "tiles">/wait.tiles</result>
+			<result name="invalid.token" type="redirect">/processLdrBonus.action
+			</result>
+		</action>
+		
+	
+		<action name="homeOfficeReports"
+			class="com.mbusa.dpb.web.Reports.action.ReportsAction"
+			method="netStarReportGen">
+			<result name="homeOffice" type="tiles">/homeOfficeReport.tiles
+			</result>
+			<result name="genStatNetStarRpt" type="tiles">/homeOfficeReport.tiles</result>
+			<result name="generateblckVehRpt" type="tiles">/homeOfficeReport.tiles
+			</result>
+			<result name="generateLdrRptAction" type="tiles">/homeOfficeReport.tiles
+			</result>
+		</action>
+		
+		<action name="exportToExcel"
+			class="com.mbusa.dpb.web.Reports.action.ReportsAction"
+			method="exportToExcel">
+			<result name="exportToExcel" type="redirect">/homeOfficeReport</result>
+			<result name="genStatNetStarRpt" type="tiles">/homeOfficeReport.tiles</result>
+		</action>
+		
+		<action name="exportBlockedToExcel"
+			class="com.mbusa.dpb.web.Reports.action.ReportsAction"
+			method="exportBlockVehicleReport">
+			<result name="exportblckVehRpt" type="redirect">/homeOfficeReport</result>
+		</action>
+	
+		<action name="dlrReserveExceptiont"
+				class="com.mbusa.dpb.web.Reports.action.DlrReserveExcetionAction" method="processBonus">
+				<result name="dlrReserveCriteria" type="tiles">/dlrReserveExceptionReport.tiles
+		</result>
+		</action>
+		<action name="reportContentDef"
+			class="com.mbusa.dpb.web.common.actions.ReportContentDefinitionAction"
+			method="getReportContentDefinition">
+			<result name="reportContentDefView" type="tiles">/reportContentDefView.tiles
+			</result>
+			<result name="rprCntDefReadOnlyView" type="tiles">/reportContentReadOnlyView.tiles
+			</result>
+		</action>
+		<action name="saveReportContentDef"
+			class="com.mbusa.dpb.web.common.actions.ReportContentDefinitionAction"
+			method="getReportContentDefinition">
+			<interceptor-ref name="token" />
+			<interceptor-ref name="basicStack"/>
+			<result name="invalid.token" type="redirect">/dashBoard</result>
+			<result name="reportContentDefView" type="tiles">/reportContentDefView.tiles
+			</result>
+		</action>
+		<action name="reportContentDefList"
+			class="com.mbusa.dpb.web.common.actions.ReportContentDefList" method="getReportContentList">
+			<result name="reportContentList" type="tiles">/reportContentDefList.tiles
+			</result>
+		</action>
+		<action name="processCalDef"
+			class="com.mbusa.dpb.web.common.actions.ProcessCalDefAction" method="getCurrentMonthProcess">
+			<result name="processCalView" type="tiles">/processCalView.tiles
+			</result>
+			<result name="HomePage" type="redirect">/dashBoard</result>
+		</action>
+		
+		<action name="viewProcesspopup"
+			class="com.mbusa.dpb.web.common.actions.ViewProcessPopupAction"
+			method="viewProcess">
+			<result name="processPopupView" type="tiles">/processPopupView.tiles
+			</result>
+			<!-- <result name="input" type="tiles">/processPopupView.tiles</result> -->
+		</action>
+		
+		<action name="saveProcesspopup"
+			class="com.mbusa.dpb.web.common.actions.ViewProcessPopupAction"
+			method="saveProcess">
+			<interceptor-ref name="token" />
+			<interceptor-ref name="basicStack"/>
+			<result name="invalid.token" type="redirect">/processCalDef</result>
+			<result name="input" type="tiles">/processPopupView.tiles</result>
+		</action>
+		
+		<action name="logout" method="logout"
+			class="com.mbusa.dpb.web.common.actions.LoginAction">
+			<result name="logout">jsp/login.jsp</result>
+		</action>
+
+		<action name="retailsAndPaymentsReport"  class="com.mbusa.dpb.web.Reports.action.RetailsAndPaymentsReportAction" method="displayRetailsAndPaymentsReport">
+	 		<result name="retailsAndPaymentsRpt" type="tiles">/retailsAndPaymentsReport.tiles</result> 
+		</action>
+
+		<action name="viewGenPaypopup" class="com.mbusa.dpb.web.fileProcess.ViewGenPaypopupAction" method="viewGenPaypopup"> 
+	 		<result name="viewGenPaypopup" type="tiles">/viewGenPayPopUp.tiles</result>
+		</action>
+
+ 		<action name="viewFileProcpopup" class="com.mbusa.dpb.web.fileProcess.ViewFileProcessPopUpAction" method="viewFileProcpopup"> 
+	 		<result name="viewFileProcpopup" type="tiles">/viewFileProcpopup.tiles</result>
+		</action>
+     
+     
+	     <action name="viewGenReportpopup" class="com.mbusa.dpb.web.fileProcess.ViewGenReportPopUpAction" method="viewGenReportpopup"> 
+	     	 <result name="viewGenReportpopup" type="tiles">/viewGenReportpopup.tiles</result>
+	     </action>
+	     
+	        <action name="viewLdrBonuspopup" class="com.mbusa.dpb.web.bonusProcess.action.ViewProcLdrBonusPopupAction" method="viewLdrBonuspopup"> 
+	     	 <result name="viewLdrBonuspopup" type="tiles">/viewLdrBonuspopup.tiles</result>
+	     </action>
+	     
+	     <action name="viewProcBonusProcpopup" class="com.mbusa.dpb.web.bonusProcess.action.ViewProcBonusPopupAction" method="viewProcBonusProcpopup"> 
+	     	 <result name="viewProcBonusProcpopup" type="tiles">/viewProcBonusProcpopup.tiles</result>
+	     </action>
+	     <action name="dlrRsrvSumReport" class="com.mbusa.dpb.web.Reports.action.dlrRsrvSumRptAction" method="viewDlrRsrvSumReport"> 
+	     	 <result name="dlrRsrvSumReport" type="tiles">/viewDlrRsrvSumReport.tiles</result>
+	     </action>
+	      <action name="rtlDateChange" class="com.mbusa.dpb.web.common.actions.RetailDateChangeAction" method="viewPage"> 
+	     	 <result name="rtlDtChange" type="tiles">/retailDateChange.tiles</result>
+	     </action>
+	     <action name="schTime" class="com.mbusa.dpb.web.common.actions.ScheduleTimeAction" method="previewPage"> 
+	     	 <result name="schTimeView" type="tiles">/schTime.tiles</result>
+	     </action>
+	     
+	     <!-- modified for File copy-delete functionality -->
+	     <!-- Start
+	     <action name="filecopy" class="com.mbusa.dpb.web.common.actions.FileCopyAction" method="previewPage"> 
+	     	
+	     	<result name="filecopyView" type="tiles">/fileCopy.tiles</result>
+	     </action> 
+	      -->
+	     <action name="filecopy" class="com.mbusa.dpb.web.common.actions.FileCopyAction" method="previewPage"> 
+	     	 <interceptor-ref name="defaultStack">           
+            </interceptor-ref>
+	     	<result name="filecopyView" type="tiles">/fileCopy.tiles</result>
+	     	<result name="input" type="tiles">/fileCopy.tiles</result>
+	     </action> 
+	    <!-- End -->
+	    <action name="amgPerfAddOrEdit" class="com.mbusa.dpb.web.common.actions.AMGDealerAction" method="previewPage"> 	    
+	     	<result name="amgPerfView" type="tiles">/amgPerfAddOrEdit.tiles</result>
+	     	<!-- <result name="input" type="tiles">/amgPerfAddOrEdit.tiles</result> -->
+	     </action>
+	     <action name="amgPerfAddOrEditModifyData" class="com.mbusa.dpb.web.common.actions.AMGDealerAction" method="modifyAMGDealerInfo"> 	    
+	     	<result name="amgDealerList" type="tiles">/amgPerfAddOrEdit.tiles</result>
+	     	<!-- <result name="input" type="tiles">/amgPerfAddOrEdit.tiles</result> -->
+	     </action> 
+	    <action name="amgPerfAddOrEditRetrieveData" class="com.mbusa.dpb.web.common.actions.AMGDealerAction" method="retrieveAMGDealerInfo"> 	 
+	     	<result name="amgDealerList" type="tiles">/amgPerfAddOrEdit.tiles</result>
+	     </action> 
+	     <action name="amgPerfAddOrEditretrieveAMGDealerName" class="com.mbusa.dpb.web.common.actions.AMGDealerAction" method="retrieveAMGDealerName"> 
+	     	<result name="amgDealerName" type="tiles">/amgPerfAddOrEdit.tiles</result>
+	     </action> 
+	     <action name="ldrshipReportGen" class="com.mbusa.dpb.web.Reports.action.LeadershipReportAction"
+			method="ldrshipReportGen">
+			<result name="ldrshipReportGen" type="tiles">/ldrshipReportGen.tiles</result>
+		</action>
+		
+		<action name="reportsGenerate1" class="com.mbusa.dpb.web.Reports.action.LeadershipReportAction" method="reportsGenerate1">
+		 	<interceptor-ref name="ldrwaitingStack">
+				<param name="delay">2000</param>
+			</interceptor-ref>
+		 	<result name="ldrshipReportPopUp" type="tiles">/ldrshipReportPopUp.tiles</result>
+		 	<result name="ldrwaitReport" type = "tiles">/ldrwaitReport.tiles</result>
+		 	<!-- <result name="wait" type = "tiles">/waitReport.tiles</result> -->
+		</action>
+	    
+	    <action name="viewRtlCalpopup" class="com.mbusa.dpb.web.common.actions.RtlCalAction" method="viewRetailCalendar"> 
+	 		<result name="viewRtlCalpopup" type="tiles">/viewRtlCalpopup.tiles</result>
+		</action>
+ <!--Performance improvement on netstar report-Start(Sneh)-->
+	    <action name="getMonths" class="com.mbusa.dpb.web.common.actions.NetstarTreeAction" method="getMonths"> 
+	 		<result name="treeStructure" type="tiles">/treeStructure.tiles</result>
+		</action>  
+		<action name="getFiles" class="com.mbusa.dpb.web.common.actions.NetstarTreeAction" method="getFiles"> 
+	 		<result name="treeStructure" type="tiles">/treeStructure.tiles</result>
+		</action> 
+		<action name="savePDFFile"
+			class="com.mbusa.dpb.web.common.actions.NetstarTreeAction"
+			method="savePDFFile">
+			<result name="savePDFFile" type="redirect">/reports.tiles</result>
+		</action>
+		<!--Performance improvement on netstar report-End(Sneh) -->
+	     
+	</package>
+</struts>

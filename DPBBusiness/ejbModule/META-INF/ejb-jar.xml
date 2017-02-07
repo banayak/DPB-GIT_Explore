@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ejb-jar version="3.1" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/ejb-jar_3_1.xsd">
+  <display-name>DPBBusiness </display-name> 
+  	<enterprise-beans >
+		<session>
+			<ejb-name>SchedulerBean</ejb-name>
+			<home>com.ibm.websphere.scheduler.TaskHandlerHome</home>
+			<remote>com.ibm.websphere.scheduler.TaskHandler</remote>
+			<ejb-class>
+				com.mbusa.dpb.business.SchedulerBean
+			</ejb-class>
+			<session-type>Stateless</session-type>
+		</session>
+		
+	</enterprise-beans>
+ </ejb-jar>

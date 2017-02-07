@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>    <!-- Specify a JDBC datasource -->
+	<Resource name="jdbc/SRTDB" auth="Container" type="javax.sql.DataSource"
+		username="SCPRT" password="syntel123$" driverClassName="com.ibm.db2.jcc.DB2Driver"
+		url="jdbc:db2j:net://172.19.32.236:50000/DSCPIST" maxActive="10" maxIdle="4" />
+</Context>

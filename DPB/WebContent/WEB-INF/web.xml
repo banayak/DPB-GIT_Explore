@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+	<display-name>DPB</display-name>
+	<welcome-file-list>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+	<listener>
+		<listener-class>org.apache.struts2.tiles.StrutsTilesListener</listener-class>
+	</listener>
+	<filter>
+      <filter-name>struts2</filter-name>
+      <filter-class>
+       	org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter
+      </filter-class>
+   </filter>
+
+   <filter-mapping>
+      <filter-name>struts2</filter-name>
+      <url-pattern>/*</url-pattern>
+   </filter-mapping>
+ 
+	 <servlet>
+		<servlet-name>CacheManagerInitServlet</servlet-name>
+		<servlet-class>com.mbusa.dpb.web.common.CacheManagerInitServlet</servlet-class>
+	 <load-on-startup>1</load-on-startup> 
+	</servlet>
+	<servlet>
+		<servlet-name>SchedulerTask</servlet-name>
+		<servlet-class>com.mbusa.dpb.web.common.actions.SchedulerTask</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>SchedulerTask</servlet-name>
+		<url-pattern>/SchedulerTask</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CacheManagerInitServlet</servlet-name>
+		<url-pattern>/cacheManagerInitServlet</url-pattern>
+	</servlet-mapping>
+	<context-param>
+		<param-name> org.apache.tiles.impl.BasicTilesContainer.DEFINITIONS_CONFIG </param-name>
+		<param-value>/WEB-INF/tiles.xml</param-value>
+	</context-param>
+	<resource-ref>      
+		<description>Datasourcconnectiontodb</description>
+		<res-ref-name>jdbc/DPBDB</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+		<res-sharing-scope>Shareable</res-sharing-scope>
+		<mapped-name>jdbc/DPBDB</mapped-name>      
+	</resource-ref>
+	<resource-env-ref>
+		<description>
+			Resource reference for the User Config Provider Referenceable
+		</description>
+		<resource-env-ref-name>DPBUserConfig</resource-env-ref-name>
+		<resource-env-ref-type>com.mbusa.dpb.userconfig.DPBUserConfig</resource-env-ref-type>
+		<mapped-name>DPBUserConfig</mapped-name>
+
+	</resource-env-ref>
+		
+</web-app>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/application_6.xsd" version="6">
+	<display-name>DPBEAR</display-name>
+	<module id="Module_1376291517085">
+		<web>
+			<web-uri>DPB.war</web-uri>
+			<context-root>DPB</context-root>
+		</web>
+	</module>
+	<module id="Module_1376291517086">
+		<ejb>DPBBusiness.jar</ejb>
+	</module>
+	
+</application>
