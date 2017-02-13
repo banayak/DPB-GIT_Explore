@@ -4,6 +4,7 @@ public interface IConstants {
 	
 	public static final String Test = "1";
 	public static final String USER_ROLE_REPORTS = "1";
+	public static final String Test1 = "1";
 	public static final String USER_ROLE_TREASURY = "2";
 	public static final String USER_ROLE_ADMIN = "3";
 	public static final String USER_ROLE_SRD = "4";
