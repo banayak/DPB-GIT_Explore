@@ -334,7 +334,7 @@ public class GenerateReportHelper {
          BufferedReader br=null;  
          Document pdfDoc = new Document(); 
          try {  
-             String output_file =file1.getPath()+"\\"+fName+".pdf"; 
+             String output_file =file1.getPath()+File.separator+fName+".pdf"; 
              PdfWriter writer=PdfWriter.getInstance(pdfDoc,new FileOutputStream(output_file));  
              pdfDoc.open();  
              pdfDoc.setMarginMirroring(true);  
