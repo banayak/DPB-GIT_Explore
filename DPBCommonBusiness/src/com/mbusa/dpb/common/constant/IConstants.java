@@ -2,6 +2,7 @@ package com.mbusa.dpb.common.constant;
 
 public interface IConstants {
 	
+	public static final String Test = "1";
 	public static final String USER_ROLE_REPORTS = "1";
 	public static final String USER_ROLE_TREASURY = "2";
 	public static final String USER_ROLE_ADMIN = "3";
