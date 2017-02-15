@@ -21,6 +21,7 @@ public class CoFiCoFileProcessing implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private String poNo;
+	private String poNo1;
 	private String coCode;
 	private Date ladspBnsAcrlPostdate;
 	private Double ladrspBnsAmt;
