@@ -24,6 +24,7 @@ public interface IConstants {
 	public static final String REPORT_PROCESS_NAME 		 	= "RP";
 	public static final String PAYMENT_TYPE_FIXED 	 		= "F";
 	public static final String PAYMENT_TYPE_VARIABLE 		= "V";
+	public static final String VARIABLE_BONUS_PROCESS3 		= "VB";
 	
 	public static final String GENERAL_PROGRAM_TYPE_FIXED 	 = "Y";
 	public static final String GENERAL_PROGRAM_TYPE_VARIABLE = "N";
