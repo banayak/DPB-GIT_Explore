@@ -11,6 +11,7 @@ public interface IConstants {
 	
 	public static final String FIXED_BONUS_PROCESS 			= "FB";
 	public static final String FIXED_BONUS_PROCESS1 			= "FB";
+	public static final String FIXED_BONUS_PROCESS2 			= "FB";
 	public static final String VARIABLE_BONUS_PROCESS 		= "VB";
 	public static final String COMMISSION_BONUS_PROCESS 	= "CB";
 	public static final String FIXED_PAYMENT_PROCESS 		= "FP";
