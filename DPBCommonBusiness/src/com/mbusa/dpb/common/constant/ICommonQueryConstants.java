@@ -32,6 +32,13 @@ public interface ICommonQueryConstants {
 			"and cond.CDE_DPB_CND_TYP = 'B' and cond.CDE_DPB_STS = 'A' " +
 			"group by cnd_rel.CDE_VEH_TYP, cnd_rel.ID_DPB_CND, cond.NAM_DPB_CND, cond.CDE_DPB_CND, " +
 			"cond.NAM_DPB_VAR, cond.TXT_DPB_CHK_VAL, cond.TXT_DPB_REG_EX  with ur";
+	String BLOCKED_COND_SELECT_QUERY3 = "select cnd_rel.CDE_VEH_TYP, cnd_rel.ID_DPB_CND, cond.NAM_DPB_CND, cond.CDE_DPB_CND, " +
+			"cond.NAM_DPB_VAR, cond.TXT_DPB_CHK_VAL, cond.TXT_DPB_REG_EX " +
+			"from VEH_TYP_CND_REL cnd_rel, DPB_CND cond " +
+			"where cond.ID_DPB_CND in (cnd_rel.ID_DPB_CND) " +
+			"and cond.CDE_DPB_CND_TYP = 'V' and cond.CDE_DPB_STS = 'A' " +
+			"group by cnd_rel.CDE_VEH_TYP, cnd_rel.ID_DPB_CND, cond.NAM_DPB_CND, cond.CDE_DPB_CND, " +
+			"cond.NAM_DPB_VAR, cond.TXT_DPB_CHK_VAL, cond.TXT_DPB_REG_EX  with ur";
 	
 	String INSERT_PROC_LOG = "INSERT INTO DPB_PROC_LOG(CDE_DPB_PROC_STS,ID_DPB_PROC,TXT_DPB_PROC_MSG,ID_CREA_USER," +
 			"ID_LAST_UPDT_USER,DTS_LAST_UPDT,DTS_CREA) VALUES(?,?,?,?,?,current timestamp,current timestamp)";
